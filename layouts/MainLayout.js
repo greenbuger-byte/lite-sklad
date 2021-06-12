@@ -4,6 +4,7 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 import Head from 'next/head';
 import { Layout, Menu , Card, Row, Col } from 'antd';
 import AddModal from '../components/AddModal';
+import HistoryRow from '../components/HistoryRow';
 
 const {  Footer, Sider, Content, Header  } = Layout;
 const { SubMenu } = Menu;
@@ -33,8 +34,14 @@ const MainLayout = ({children, props}) => {
         <Content className={style.headerAntd__content}>
         <Row justify="center" align="top">
        
-      <Col span={18}>
-        <Card> {children} </Card>
+      <Col span={14}>
+       {children} 
+      </Col>
+      <Col span={4}>
+        <Card> <h1>Последние изменения</h1>
+          <HistoryRow/>
+        
+         </Card>
       </Col>
       </Row>
           

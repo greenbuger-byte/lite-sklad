@@ -17,28 +17,31 @@
 
          &:hover{
             border-left: 4px solid rgb(255, 247, 233);
-            color: orange;
+            color: rgb(34, 34, 34);
             background-color: rgba(255, 255, 244, 0.082);
          }
     }
     &__name{
         display: flex;
         flex:1;
+        border-left: 1px solid whitesmoke;
+        margin-left: 10px;
+        padding-left: 10px;
     }
     &__balance, &__retail, &__wholesale,  &__repair{
         display: flex;
         flex-direction: row;
-
+        
         flex: 0.2;
         border-left: 1px solid whitesmoke;
-        padding-left: 5px;
+        padding:0 5px;
         align-items: center;
         justify-content: center;
         & span{
             font-size: 10px;
             font-weight: 300;
             
-            opacity: .2;
+            opacity: .3;
             &:first-child{
                 margin-right: 10px;
             }
@@ -48,7 +51,7 @@
         }
         &:hover{
              & span{
-                 opacity: .4;
+                 opacity: .8;
              }       
         }
     }

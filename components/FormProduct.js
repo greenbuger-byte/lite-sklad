@@ -1,8 +1,10 @@
-import { Form , Input} from 'antd';
-import { useEffect, useState } from 'react';
+import {Button, Form , Input} from 'antd';
+import { useState } from 'react';
 
-const FormProduct = ({product}) => {
-    let currentProduct = product || {barcode: '', name: '', balance: '', retail: '', wholesale: '', rapair: ''}
+
+
+const FormProduct = ({product, isError, isCreated, saveHandler}) => {
+    let currentProduct = product || {barcode: '', name: '', balance: '', retail: '', wholesale: '', rapair: ''};
     const [name, setName] = useState(currentProduct.name || '');
     const [barcode, setBarcode] = useState(currentProduct.barcode || '');
     const [balance, setBalance] = useState(currentProduct.balance || '');
@@ -10,9 +12,27 @@ const FormProduct = ({product}) => {
     const [wholesale, setWholesale] = useState(currentProduct.wholesale || '');
     const [repair, setRepair] = useState(currentProduct.repair || '');
     
-
+    const layout = {
+        formlayout : 'horizontal',
+        labelCol: { span: 4 },
+        wrapperCol: { span: 8 },
+      };
+      const saveToHandler = () => {
+        let arrayProduct = [name, barcode, balance, retail, wholesale, repair];
+        let saveProduct = {
+            name, barcode, balance, retail, wholesale, repair
+        }
+        let valueIsNotEmpty = true;
+        for(let save of arrayProduct){
+            if(save=='') valueIsNotEmpty = false; 
+        }
+      if(valueIsNotEmpty){ 
+          saveHandler(saveProduct)
+        }else{
+            isError();     }
+      }
     return (
-        <Form>
+        <Form onSubmit = {()=> alert('asdas')} layout='vertical' {...layout}>
             <Form.Item
              label="Наименование"
              name="name"
@@ -27,7 +47,7 @@ const FormProduct = ({product}) => {
              initialValue={barcode}
              rules={[{ required: true, message: 'Введите штрихкод' }]}
             >
-                <Input onChange={e=>setName(e.target.value)}/>
+                <Input onChange={e=>setBarcode(e.target.value)}/>
             </Form.Item>
             <Form.Item
              label="Остаток"
@@ -61,9 +81,26 @@ const FormProduct = ({product}) => {
             >
                 <Input  onChange={e=>setRepair(e.target.value)}     />
             </Form.Item>
-      
+            {
+                isCreated &&  <div className={'buttonCreate'}>
+                <Button type="primary" onClick={saveToHandler} >Добавить</Button>
+            </div>
+            }
+          
+            <style jsx>
+   {`
+        .buttonCreate{
+            margin: 60px;
+            display: flex;
+            justify-content: flex-end;
+            box-sizing: border-box;
+        }
+    `}
+</style>
     </Form>
     );
 };
+
+
 
 export default FormProduct;
