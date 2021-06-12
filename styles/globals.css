@@ -1,0 +1,39 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: none!important;
+}
+ol, ul, dl {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+body{
+    height: 100vh;
+}
+h1{
+    margin-bottom: 0px;
+}
+.ant-layout-header{
+    height: auto!important;
+}
+.ant-layout-content{
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: whitesmoke;
+  }
