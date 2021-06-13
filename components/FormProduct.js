@@ -15,7 +15,7 @@ const FormProduct = ({product, isError, isCreated, saveHandler}) => {
     const layout = {
         formlayout : 'horizontal',
         labelCol: { span: 4 },
-        wrapperCol: { span: 8 },
+        wrapperCol: { span: 20 },
       };
       const saveToHandler = () => {
         let arrayProduct = [name, barcode, balance, retail, wholesale, repair];

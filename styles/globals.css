@@ -40,3 +40,7 @@ h1{
   .ant-layout-sider{
     background-color: #fff!important;
   }
+
+.ant-drawer .ant-drawer-content {
+    overflow: scroll!important;
+}

@@ -1,19 +1,19 @@
 
-import { Modal} from 'antd';
+import { Drawer } from 'antd';
 import FormProduct from './FormProduct';
 const AddModal = ({isAddModalVisible, handleCancel, handleOk, currentProduct}) => {
    
     return (
-        <Modal 
-        title="Редактировать товар" 
-        visible={isAddModalVisible} 
-        onOk={handleOk} 
-        onCancel={handleCancel}
-        okText="Сохранить"
-        cancelText="Отмена"
+        <Drawer
+            width={640}
+            title=""
+            placement="right"
+            closable={false}
+            onClose={handleCancel}
+            visible={isAddModalVisible}
         >
-          <FormProduct product={currentProduct}/>
-      </Modal>
+            <FormProduct product={currentProduct}/>
+        </Drawer>
     );
 };
 
