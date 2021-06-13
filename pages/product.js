@@ -1,7 +1,7 @@
 
 import FormProduct from '../components/FormProduct';
 import MainLayout from '../layouts/MainLayout';
-import { createProduct } from '../DAL/createProduct';
+import { productRequest } from '../DAL/productRequest';
 import {useRouter} from 'next/router';
 import { useState } from 'react';
 import {Alert, Card} from 'antd';
@@ -12,7 +12,7 @@ const product = () => {
     const [err, setErr] = useState('');
     const router = useRouter();
     const saveHandler = async (formData)=>{
-      await createProduct(formData);
+      await productRequest.create(formData);
             router.push(LIST_ROUTE);
     }
 

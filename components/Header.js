@@ -26,24 +26,19 @@ const Header = () => {
       
     return (
         <div className={style.header}>
-            <div className={style.header__left}>
-                <h1><img  width={50} src={'/logo.svg'}   alt="logo"/> LITE-SKLAD</h1>
-                <div>
+            <div className="logo">
+              <img  width={50} src={'/logo.svg'}   alt="logo"/>
+            </div>
             
-            <ul className={style.header__menu}>
-         <li>  <Link href={LIST_ROUTE}><a><UnorderedListOutlined />Список</a></Link></li> 
-         <li>  <Link href={ADD_PRODUCT_ROUTE}><a><FileAddOutlined />Добавить</a></Link></li> 
-         <li> <Link href={HISTORY_ROUTE}><a><HistoryOutlined/>История</a></Link></li> 
-            </ul>
-        </div>
-            </div>
-            <div className={style.header__middle}>
-           
-            </div>
-            <div className={style.header__right}>
-          
+            <Menu mode="horizontal" defaultSelectedKeys={[2]}>
+              <Link href={LIST_ROUTE}><a><Menu.Item key={1} ><UnorderedListOutlined />Список </Menu.Item></a></Link>
+              <Link href={ADD_PRODUCT_ROUTE}><a><Menu.Item key={2}><FileAddOutlined />Добавить</Menu.Item></a></Link>
+              <Link href={HISTORY_ROUTE}><a><Menu.Item key={3}><HistoryOutlined/>История </Menu.Item></a></Link>
+            </Menu>
+            
  <Dropdown overlay={menu} placement="bottomCenter" arrow><div className={style.header__profile}><Avatar  src={"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}/><h4>iwebchester@gmail.com</h4></div></Dropdown>  
-            </div>
+  
+         
         </div>
     );
 };

@@ -1,5 +1,5 @@
 .main{
-    overflow: hidden;
+    
     &__title{
             position: sticky;
             top: 0;
@@ -17,6 +17,5 @@
            }
         }
         &__list{
-            overflow-y: scroll;
         }
 }

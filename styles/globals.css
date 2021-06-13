@@ -8,13 +8,12 @@ ol, ul, dl {
     margin-bottom: 0!important;
 }
 body{
-    height: 100vh;
+    min-height: 100vh;
 }
 h1{
     margin-bottom: 0px;
 }
 .ant-layout-header{
-    height: auto!important;
 }
 .ant-layout-content{
 }
@@ -36,4 +35,8 @@ h1{
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: whitesmoke;
+  }
+
+  .ant-layout-sider{
+    background-color: #fff!important;
   }
