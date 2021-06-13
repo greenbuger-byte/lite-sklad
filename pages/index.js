@@ -15,7 +15,8 @@ export default function Home() {
   //   {id: 2, barcode: '2353453454', name:'Дисплей Apple Iphone 7 plus AAA+ Китай', balance:3,  retail: 1500, repair: 1300, wholesale:1000}
   // ]
   useEffect( () => {
-    setProductList( listProduct(listProduct) );
+   listProduct(setProductList);
+   console.log(productList)
   }, [] );
       
   return (
@@ -24,7 +25,7 @@ export default function Home() {
         <div className={style.main__title}> <h2>Список товара </h2><div><Search placeholder="Найти в списке" width={300} onSearch={onSearch} /></div></div>   
         <div className={style.main__list}>   
         <Card>
-        {productList.map(product=> <Product key={product.id} product={product} />)} 
+        {productList.map(({id, data})=> <Product key={id} product={data} />)} 
         </Card>     
        
     
