@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import {Form, Input } from 'antd';
-const FormEdit = ({product}) => {
+import {productRequest} from '../DAL/productRequest';
+import { Button } from 'antd';
+const FormEdit = ({product, id}) => {
     const [balance, setBalance] = useState(product.balance);
+    const save = () => {
+        productRequest.update(id, balance);
+    }
     return (
         <Form>
             <Form.Item
@@ -10,7 +15,8 @@ const FormEdit = ({product}) => {
                  initialValue={1}
                  rules={[{ required: true, message: 'Введите количество' }]}
             >
-                <Input/>
+                <Input onChange={e=>setBalance(e.target.value)} />
+                <Button onClick={save}>Изменить</Button>
             </Form.Item>
            
         </Form>

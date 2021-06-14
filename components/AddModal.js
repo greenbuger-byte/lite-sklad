@@ -1,7 +1,7 @@
 
 import { Drawer } from 'antd';
 import FormProduct from './FormProduct';
-const AddModal = ({isAddModalVisible, handleCancel, handleOk, currentProduct}) => {
+const AddModal = ({isAddModalVisible, handleCancel, saveHandler, currentProduct}) => {
    
     return (
         <Drawer
@@ -12,7 +12,7 @@ const AddModal = ({isAddModalVisible, handleCancel, handleOk, currentProduct}) =
             onClose={handleCancel}
             visible={isAddModalVisible}
         >
-            <FormProduct product={currentProduct}/>
+            <FormProduct saveHandler={saveHandler}  product={currentProduct}/>
         </Drawer>
     );
 };

@@ -5,10 +5,8 @@ import Product from '../components/Product';
 const { Search } = Input;
 import style from '../styles/Home.module.scss';
 import { useEffect, useState } from 'react';
-import {productRequest} from '../DAL/productRequest';
 import {db} from '../firebase';
 export default function Home() {
-  const onSearch = value => console.log(value);
   const [productList, setProductList] = useState([]); 
   const [filterProductList, setFilterProductList] = useState([]); 
   const [searchInput, setSearchInput] = useState('');
@@ -22,36 +20,39 @@ export default function Home() {
       setFilterProductList(snapshot.docs.map(doc=>({id: doc.id, data: doc.data()}))); // return product's list
     }) 
   }, [] );
+
+
   useEffect( () => {
    findHandler();
   }, [searchInput])
 
-  const findHandler =  () => {
-     setFilterProductList(productList);
-    if(searchInput!==''){
-      let patt = `/${searchInput}/i`;
-  const [filterProductList, setFilterProductList] = useState([]); 
-      let filter = filterProductList;
-
-      setFilterProductList(prev=>prev.filter(product => {
-        if(product.data.barcode == find){
+  const  findHandler =  async () => {
+    if(searchInput!=''){
+     await setFilterProductList(productList.filter(product => {
+        if(product.data.barcode == searchInput) return  product;
+    }));
+    if(filterProductList.length<1){
+      //Поиск по тексту
+      let str = new RegExp(`${searchInput}`, 'g');
+     await setFilterProductList(productList.filter(product => {
+        if(product.data.name.match(str)){
            return  product;
         }
-
     }));
     }
-  
-    
-    console.log(productList);
+
+    }else{
+      setFilterProductList(productList);
+    }
   }
       
   return (
       <MainLayout>
-          <div className={style.main}>
-        <div className={style.main__title}> <h2>Список товара </h2><div><Search onChange={(e)=>setSearchInput(e.target.value)} placeholder="Найти в списке" width={300} onSearch={onSearch} /></div></div>   
+          <div className={style.main}>{searchInput}
+        <div className={style.main__title}> <h2>Список товара </h2><div><Search onChange={(e)=>setSearchInput(e.target.value)}  placeholder="Найти в списке" width={300} /></div></div>   
         <div className={style.main__list}>   
-        {  filterProductList.length>0  ? ( filterProductList.map(({id, data})=> <Product key={id} product={data} />)) : 'Ничего не найдено' }
-       
+        {  filterProductList.length>0  ? ( filterProductList.map(({id, data})=> <Product key={id} id={id} product={data} />)) : 'Ничего не найдено' }
+        
     
             </div>
              </div>

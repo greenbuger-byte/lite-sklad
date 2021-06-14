@@ -2,12 +2,30 @@ import {useState} from 'react';
 import style from '../styles/Product.module.scss';
 import { WalletOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
-
+import {productRequest} from '../DAL/productRequest';
 
 
 import AddModal from './AddModal';
 import EditModal from './EditModal';
-const Product = ({product}) => {
+const AlertWindow = () => {
+
+  return (
+    <Alert
+      message="Success Tips"
+      type="success"
+      showIcon
+      action={
+        <Button size="small" type="text">
+          UNDO
+        </Button>
+      }
+      closable
+    />
+  )
+}
+
+
+const Product = ({product, id}) => {
     const [isAddModalVisible, setIsAddModalVisible] = useState(false);
     const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
@@ -23,8 +41,9 @@ const Product = ({product}) => {
       const handleCancel = () => {
         setIsAddModalVisible(false); 
       };
-      const saveProduct = () =>{
-
+      const saveHandler = (payload) =>{
+        productRequest.updateList(id, payload);
+        setIsAddModalVisible(false);
       }
       const handleEditOk = () =>{
 
@@ -62,8 +81,20 @@ const Product = ({product}) => {
             </div>
         
         </div>
-        <AddModal currentProduct={product} saveProduct = {saveProduct} isAddModalVisible={isAddModalVisible} handleOk={handleOk} handleCancel={handleCancel}/>
-        <EditModal currentProduct={product}  isEditModalVisible={isEditModalVisible} handleOk={handleEditOk} handleEditCancel={()=>setIsEditModalVisible(false)}/>
+        <AddModal 
+          currentProduct={product} 
+          saveHandler = {saveHandler} 
+          isAddModalVisible={isAddModalVisible} 
+          handleOk={handleOk} 
+          handleCancel={handleCancel}
+        />
+        <EditModal 
+            currentProduct={product} 
+            id={id}  
+            isEditModalVisible={isEditModalVisible} 
+            handleOk={handleEditOk} 
+            handleEditCancel={()=>setIsEditModalVisible(false)}
+        />
         </>
     );
 };

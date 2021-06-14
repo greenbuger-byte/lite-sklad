@@ -1,6 +1,6 @@
 import {Button,  Modal} from 'antd';
 import FormEdit from './FormEdit';
-const EditModal = ({isEditModalVisible, handleEditCancel, handleEditOk, currentProduct}) => {
+const EditModal = ({isEditModalVisible, handleEditCancel, handleEditOk, id, currentProduct}) => {
    
     
     return (
@@ -12,7 +12,7 @@ const EditModal = ({isEditModalVisible, handleEditCancel, handleEditOk, currentP
         okText="Списать"
         cancelText="Отмена"
         >
-         <FormEdit product={currentProduct}/>
+         <FormEdit id={id} product={currentProduct}/>
          
       </Modal>
     );

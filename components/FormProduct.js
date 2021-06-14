@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 
-const FormProduct = ({product, isError, isCreated, saveHandler}) => {
+const FormProduct = ({product, isError,  isCreated, saveHandler}) => {
     let currentProduct = product || {barcode: '', name: '', balance: '', retail: '', wholesale: '', rapair: ''};
     const [name, setName] = useState(currentProduct.name || '');
     const [barcode, setBarcode] = useState(currentProduct.barcode || '');
@@ -81,11 +81,9 @@ const FormProduct = ({product, isError, isCreated, saveHandler}) => {
             >
                 <Input  onChange={e=>setRepair(e.target.value)}     />
             </Form.Item>
-            {
-                isCreated &&  <div className={'buttonCreate'}>
-                <Button type="primary" onClick={saveToHandler} >Добавить</Button>
+            <div className={'buttonCreate'}>
+                <Button type="primary" onClick={saveToHandler} >{isCreated ? 'Добавить' : 'Редактировать'} </Button>
             </div>
-            }
           
             <style jsx>
    {`

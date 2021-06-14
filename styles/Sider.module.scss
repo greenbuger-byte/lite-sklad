@@ -1,0 +1,27 @@
+.sider{
+    display: flex;
+    flex: 1;
+    list-style: none;
+    flex-direction: column;
+    &__collapsed{
+        font-size: 20px;
+        text-align: center;
+    }
+    & li{
+        padding:5px;
+        padding-left: 15px;
+        opacity: .6;
+        border-bottom: whitesmoke;
+        border-top: 1px solid whitesmoke;
+        cursor: pointer;
+        & a{
+            color: black;
+            display: block;
+        }
+        &:hover, &.sider__active{
+            background-color: whitesmoke;
+            opacity: 1;
+        }
+    }
+
+}

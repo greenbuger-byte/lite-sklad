@@ -17,6 +17,16 @@ export const productRequest  = {
     list: (setProductList)=>{
         // setProduct ( set state )
         db.collection('products').onSnapshot((snapshot) => snapshot.docs.map(doc=>({id: doc.id, data: doc.data()}))); // return product's list
+    },
+    update: (id, balance)=> {
+        console.log(id);
+        db.collection('products').doc(id).update({
+            balance: balance
+          });
+      
+    },
+    updateList: (id, payload) => {
+        db.collection('products').doc(id).update(payload)
     }
 
 }
