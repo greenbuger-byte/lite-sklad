@@ -13,9 +13,7 @@ const FormProduct = ({product, isError,  isCreated, saveHandler}) => {
     const [repair, setRepair] = useState(currentProduct.repair || '');
     
     const layout = {
-        formlayout : 'horizontal',
-        labelCol: { span: 4 },
-        wrapperCol: { span: 20 },
+        formlayout : 'horizontal'
       };
       const saveToHandler = () => {
         let arrayProduct = [name, barcode, balance, retail, wholesale, repair];

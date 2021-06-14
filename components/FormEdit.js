@@ -5,7 +5,11 @@ import { Button } from 'antd';
 const FormEdit = ({product, id}) => {
     const [balance, setBalance] = useState(product.balance);
     const save = () => {
-        productRequest.update(id, balance);
+        if(product.balance >= balance){
+            productRequest.update(id, (product.balance-balance));
+        }else{
+            alert('Balance catn\'t be less zero');
+        }
     }
     return (
         <Form>
